@@ -1,0 +1,8 @@
+name: recover
+steps:
+  - role: phoenix
+    input: [goal, repo_summary, changed_files]
+  - role: lyra
+    input: [diagnosis, goal, repo_summary, changed_files]
+  - role: libra
+    input: [diff, tests]

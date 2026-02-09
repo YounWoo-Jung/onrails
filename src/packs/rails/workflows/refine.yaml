@@ -1,0 +1,8 @@
+name: refine
+steps:
+  - role: orion
+    input: [goal, repo_summary, changed_files]
+  - role: lyra
+    input: [plan, goal, repo_summary, changed_files]
+  - role: libra
+    input: [diff, tests]

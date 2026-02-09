@@ -1,0 +1,26 @@
+{
+  "name": "onrails",
+  "version": "0.1.0",
+  "description": "Convention-over-Configuration CLI for Rails development orchestration",
+  "type": "module",
+  "bin": {
+    "onrails": "./src/cli.ts"
+  },
+  "scripts": {
+    "dev": "bun run src/cli.ts",
+    "build": "bun build src/cli.ts --outdir dist --target bun",
+    "typecheck": "tsc --noEmit",
+    "lint": "bunx biome check src/",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "commander": "^13.1.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.4",
+    "@types/js-yaml": "^4.0.9",
+    "typescript": "^5.7.3"
+  },
+  "license": "MIT"
+}
