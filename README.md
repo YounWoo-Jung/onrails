@@ -1,75 +1,73 @@
 # onrails
 
-Rails 개발을 단순하고 빠르게 오케스트레이션하는 CLI.
+A CLI that orchestrates Rails development simply and quickly.
 
-**철학: Convention over Configuration** — Rails 프로젝트를 자동 감지하고, 복잡한 설정 없이 바로 동작합니다.
+**Philosophy: Convention over Configuration** - It auto-detects Rails projects and runs without complex setup.
 
-## 설치
+## Installation
 
 ```bash
 bun install
 ```
 
-글로벌 설치:
+Global install:
 
 ```bash
 bun link
 ```
 
-## 기본 어댑터: opencode
+## Default adapter: opencode
 
-onrails는 LLM 호출에 [opencode](https://github.com/nicepkg/opencode) CLI를 사용합니다.
-API 키나 결제 설정을 onrails에 직접 할 필요가 없습니다 — opencode가 알아서 처리합니다.
+onrails uses the [opencode](https://github.com/nicepkg/opencode) CLI for LLM calls.
+You do not need to set API keys or billing in onrails - opencode handles it.
 
 ```bash
 curl -fsSL https://opencode.ai/install | bash
 ```
 
-## 사용법
+## Usage
 
-### 역할 목록 보기
+### List roles
 
 ```bash
 onrails roles
 ```
 
-### 워크플로우 목록 보기
+### List workflows
 
 ```bash
 onrails workflows
 ```
 
-### 워크플로우 실행
+### Run a workflow
 
 ```bash
-onrails run feature "사용자 프로필에 아바타 업로드 기능 추가"
+onrails run feature "Add avatar upload to user profiles"
 ```
 
 ```bash
-onrails run refine "N+1 쿼리를 eager loading으로 개선"
+onrails run refine "Fix N+1 queries with eager loading"
 ```
 
 ```bash
-onrails run recover "결제 후 이메일이 발송되지 않는 버그 수정"
+onrails run recover "Fix missing email after payment"
 ```
 
-## 워크플로우
+## Workflows
 
-| 워크플로우 | 파이프라인 | 용도 |
-|-----------|-----------|------|
-| `feature` | Orion → Lyra → Libra | 새 기능 개발 |
-| `refine`  | Orion → Lyra → Libra | 기존 코드 개선 |
-| `recover` | Phoenix → Lyra → Libra | 버그 수정/장애 복구 |
+| Workflow | Pipeline | Purpose |
+|----------|----------|---------|
+| `feature` | Orion -> Lyra -> Libra | New feature development |
+| `refine`  | Orion -> Lyra -> Libra | Improve existing code |
+| `recover` | Phoenix -> Lyra -> Libra | Bugfix/incident recovery |
 
-## 역할
+## Roles
 
-| 역할 | 책임 |
-|------|------|
-| **Orion** | 설계/계획 (코드 작성 금지) |
-| **Lyra** | 구현/코딩 (계획대로만 구현) |
-| **Libra** | 리뷰/품질 게이트 (BLOCKING/ADVISORY 구분) |
-| **Phoenix** | 디버그/장애 복구 (재현→원인→최소수정→회귀방지) |
+| Role | Responsibility |
+|------|----------------|
+| **Orion** | Design/plan (no code) |
+| **Lyra** | Implement/code (follow the plan) |
+| **Libra** | Review/quality gate (BLOCKING/ADVISORY) |
+| **Phoenix** | Debug/recovery (repro -> cause -> minimal fix -> prevent regression) |
 
-## 참고
-
-> M1/M2 Mac에서 서버 amd64 빌드 시 `--platform linux/amd64` 플래그 필요에 주의하세요.
+Korean guide: [README.ko.md](README.ko.md)
